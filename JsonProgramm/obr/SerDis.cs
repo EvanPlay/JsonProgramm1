@@ -9,13 +9,11 @@ namespace JsonProgramm.obr
     {
         public T GetT <T>(string filePath)//Дисерилизация файла
         {
-            //FileStream fileStream = new(filePath, FileMode.Open);
-            //return JsonSerializer.Deserialize<T>(fileStream);
             return JsonConvert.DeserializeObject<T>(File.ReadAllText(filePath));
         }
         public void SetT <T>(T fileStream)//Серилизация файла
         {
-            //JsonSerializer.Serialize(fileStream);
+            System.Text.Json.JsonSerializer.Serialize(fileStream);
         }
     }
 }

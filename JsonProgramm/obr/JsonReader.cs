@@ -1,8 +1,6 @@
 ﻿using JsonProgramm.Data;
-using Newtonsoft.Json;
-using System.Runtime.ExceptionServices;
 using System.Security.Cryptography;
-using System.Text.Json.Serialization;
+using System.Reflection;
 
 namespace JsonProgramm.obr
 {
@@ -18,15 +16,20 @@ namespace JsonProgramm.obr
 
             using (Aes aes = Aes.Create())
             {
+
                 foreach (var item in jsonData.jsonDataStrings)
                 {
-                    if (item.GetType() == typeof(int))
+                    //Добавить рефлексию для определения типов и/или имён файлов, для работы
+                    if (item.cvc == null)//временные значения, добвленные для очистки списка ошибок. Требуется решение
                     {
                         hash.HachMethod(item.cvc);
+                        serDis.SetT(item.cvc);
                     }
-                    else
+                    else//Добавить возможность пропуска несуществующих объектов в массиве
                     {
                         crypt.Encrypterd(item.ToString(), aes.Key, aes.IV);
+                        string newData = item.ToString();
+                        serDis.SetT(newData);
                     }
                 }
             }
