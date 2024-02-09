@@ -20,7 +20,7 @@ namespace JsonProgramm.obr
                 foreach (var item in jsonData.jsonDataStrings)
                 {
                     //Добавить рефлексию для определения типов и/или имён файлов, для работы
-                    if (item.cvc == null)//временные значения, добвленные для очистки списка ошибок. Требуется решение
+                    if (item.cvc == null)//временные значения, добвленые для очистки списка ошибок. Требуется решение
                     {
                         hash.HachMethod(item.cvc);
                         serDis.SetT(item.cvc);
