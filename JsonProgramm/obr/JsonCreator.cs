@@ -24,7 +24,6 @@ namespace JsonProgramm.obr
             };
             var json = JsonConvert.SerializeObject(obj, Formatting.Indented);//Сохранение и создание файла с данными
             var DescktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);//Полуение пути к рабочему столу
-            //using (FileStream fileStream = new FileStream(DescktopPath, FileMode.Create)){
                 File.WriteAllText(Path.Combine(DescktopPath + @"KeyJsonFile.json"), json);//Создание файла на рабочем столе (Необходим запуск от имени Администратора, для работы)
         }
     }
