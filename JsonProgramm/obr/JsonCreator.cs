@@ -9,20 +9,23 @@ namespace JsonProgramm.obr
     {
         public static void JsonCreatorMethod(byte[] Key, byte[] IV)
         {
+            var key = Convert.ToHexString(Key);
+            var iv = Convert.ToHexString(IV);
             var obj = new JsonContent//Создание объекта-файла
             {
                 Contents = new Contents[]//Создание заполняемой данными формы
                 {
                     new Contents
                     {
-                        Key = $"{Key}",
-                        IV = $"{IV}"
+                        Key = $"{key}",
+                        IV = $"{iv}"
                     }
                 }
             };
             var json = JsonConvert.SerializeObject(obj, Formatting.Indented);//Сохранение и создание файла с данными
             var DescktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);//Полуение пути к рабочему столу
-            File.WriteAllText(Path.Combine(DescktopPath), json);//Создание файла на рабочем столе (Необходим запуск от имени Администратора, для работы)
+            //using (FileStream fileStream = new FileStream(DescktopPath, FileMode.Create)){
+                File.WriteAllText(Path.Combine(DescktopPath + @"KeyJsonFile.json"), json);//Создание файла на рабочем столе (Необходим запуск от имени Администратора, для работы)
         }
     }
 }
