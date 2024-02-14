@@ -29,12 +29,13 @@ namespace JsonProgramm.obr
                         if (methodinfo.ReturnType == typeof(string))//Реакция на данны типа "String"
                         {
                             byte[] enc = crypt.Encrypterd(i.ToString(), aes.Key, aes.IV);//Чтение и передача данных для шифорвания
-                            serDis.SetT(i);
+                            serDis.SetT(enc);
                         }
                         else if (methodinfo.ReturnType == typeof(int))//Реакиця на данные типа "int"
                         {
                             byte[] hsh = hash.HachMethod(i);//Чтение и передача данных для хеширования
-                            serDis.SetT(i.ToString());
+                            var fileStream = Convert.ToString(hsh);
+                            serDis.SetT(fileStream: hsh);
                         }
                         else//Реакция на данные типов "bool", "byte" и иных - отсутсвует.
                         {
