@@ -23,8 +23,8 @@ namespace JsonProgramm.obr
                 }
             };
             var json = JsonConvert.SerializeObject(obj, Formatting.Indented);//Сохранение и создание файла с данными
-            var DescktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);//Полуение пути к рабочему столу
-                File.WriteAllText(Path.Combine(DescktopPath + @"KeyJsonFile.json"), json);//Создание файла на рабочем столе (Необходим запуск от имени Администратора, для работы)
+            //var DescktopPath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);//Полуение пути к рабочему столу
+                File.WriteAllText("JsonKeyFile.json", json);//Создание файла на рабочем столе (Необходим запуск от имени Администратора, для работы)
         }
     }
 }
